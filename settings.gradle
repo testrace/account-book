@@ -1,4 +1,6 @@
 rootProject.name = 'account-book'
 include 'account-book-common'
 include 'account-book-api'
+include 'account-book-core'
+
 
