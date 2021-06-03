@@ -1,48 +1,1 @@
-buildscript {
-    ext {
-        springBoot = '2.5.0'
-    }
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBoot}"
-        classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"
-    }
-}
-
-subprojects {
-
-    group 'com.hadasht'
-    version '1.0-SNAPSHOT'
-
-    apply plugin: 'java'
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
-
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-    }
-
-    test {
-        useJUnitPlatform()
-    }
-
-}
-
-project(':account-book-api') {
-    dependencies {
-        compile project(':account-book-common')
-    }
-}
-
-project(':account-book-core') {
-    dependencies {
-        compile project(':account-book-common')
-    }
-}
+buildscript {    ext {        springBootVersion = '2.5.0'    }    repositories {        mavenCentral()    }    dependencies {        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"        classpath "io.spring.gradle:dependency-management-plugin:1.0.11.RELEASE"    }}subprojects {    group 'com.hadasht'    version '1.0-SNAPSHOT'    apply plugin: 'java'    apply plugin: 'org.springframework.boot'    apply plugin: 'io.spring.dependency-management'    repositories {        mavenCentral()    }    dependencies {        testImplementation 'org.springframework.boot:spring-boot-starter-test'        compileOnly 'org.projectlombok:lombok'        annotationProcessor 'org.projectlombok:lombok'    }    test {        useJUnitPlatform()    }}project(':account-book-api') {    dependencies {        compile project(':account-book-common')    }}project(':account-book-core') {    dependencies {        compile project(':account-book-common')    }}
